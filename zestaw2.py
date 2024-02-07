@@ -1,13 +1,24 @@
+import os
+# elements for particular tasks
 line = """raz dwa 
 trzy cztery GvR 232 a"""
-
 word = "Przyklad"
-
 list1 = [10, 'a', -1, 20, 30, 40, 50, 60, 70]
-
 list2 = [12, 7, 333, 8641, 2, 1, 123, -1, 0]
-
 num = 18480466560775
+
+# ZADANIE 2.9
+def copyfile(infile_name, outfile_name):
+    # change the working directory to the current file
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+    with open(infile_name, 'r') as infile, open(outfile_name, 'w') as outfile:
+        for line in infile:
+            if line.startswith("#"):
+                continue
+            outfile.write(line)
+
+copyfile("file1.txt", "file2.txt")
 
 # ZADANIE 2.10
 def words_count(line):
@@ -86,4 +97,3 @@ def join_nums(list):
     return "".join(str(num).zfill(3) for num in list if(isinstance(num, int) and 0 < num <= 999 ))
 
 print("ZADANIE 2.19:\n", join_nums(list2))
-
